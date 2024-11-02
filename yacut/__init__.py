@@ -11,4 +11,4 @@ db = SQLAlchemy(app)
 ma = Marshmallow(app)
 migrate = Migrate(app, db)
 
-from . import views
+from . import views, api_views

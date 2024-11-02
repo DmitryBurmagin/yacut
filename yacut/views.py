@@ -9,7 +9,7 @@ from .utils import get_unique_short_id
 def index_view():
     form = UrlForm()
     if form.validate_on_submit():
-        original_link = form.original_link.data
+        original_link = form.url.data
         custom_id = form.custom_id.data or get_unique_short_id()
 
         if form.custom_id.data and URLMap.query.filter_by(
@@ -21,7 +21,7 @@ def index_view():
             )
             return redirect(url_for('index_view'))
 
-        url_map = URLMap(original=original_link, short=custom_id)
+        url_map = URLMap(url=original_link, short=custom_id)
         db.session.add(url_map)
         db.session.commit()
         flash(
@@ -32,7 +32,7 @@ def index_view():
     return render_template('index.html', form=form)
 
 
-@app.route('/short')
+@app.route('/<short>')
 def redirect_view(short):
     url_map = URLMap.query.filter_by(short=short).first_or_404()
-    return redirect(url_map.original)
+    return redirect(url_map.url)
