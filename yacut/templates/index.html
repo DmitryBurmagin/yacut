@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% block content %}
+<main>
+  <section class="container my-5 px-4">
+    <h1 class="text-center"><span style="color:red">Ya</span>Cut</h1>
+    <p class="text-center my-4">
+      Создайте короткую ссылку автоматически или предложите свой вариант
+    </p>
+
+    <div class="container">
+      <div class="row my-3">
+        <div class="col-sm">
+        </div>
+        <div class="col-sm">
+          <form method="POST" action="{{ url_for('index_view') }}">
+            {{ form.hidden_tag() }}
+            <div>
+              <div>
+                {{ form.original_link.label(class="form-label") }}
+                {{ form.original_link(class="form-control form-control-lg py-2 mb-3", placeholder="Длинная ссылка") }}
+                {% for error in form.original_link.errors %}
+                  <p class="text-danger">{{ error }}</p>
+                {% endfor %}
+              </div>
+              <div>
+                {{ form.custom_id.label(class="form-label") }}
+                {{ form.custom_id(class="form-control form-control-lg py-2 mb-3", placeholder="Ваш вариант короткой ссылки") }}
+                {% for error in form.custom_id.errors %}
+                  <p class="text-danger">{{ error }}</p>
+                {% endfor %}
+              </div>
+
+              {{ form.submit(class="btn btn-primary", value="Создать") }}
+            </div>
+          </form>
+        </div>
+        <div class="col-sm">
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row ">
+        <div class="col-sm">
+        </div>
+        <div class="col-sm">
+          {% with messages = get_flashed_messages(with_categories=True) %}
+            {% if messages %}
+              {% for category, message in messages %}
+                <div class="alert alert-{{ category }} text-center" role="alert">
+                  <h5>{{ message }}</h5>
+                </div>
+              {% endfor %}
+            {% endif %}
+          {% endwith %}
+        </div>
+        <div class="col-sm">
+        </div>
+      </div>
+    </div>
+
+  </section>
+</main>
+{% endblock %}
