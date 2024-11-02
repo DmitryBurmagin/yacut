@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
 from wtforms import URLField, SubmitField
-from wtforms.validators import DataRequired, URL, Length
+from wtforms.validators import DataRequired, URL, Length, Optional
 
 
 class UrlForm(FlaskForm):
@@ -14,7 +14,8 @@ class UrlForm(FlaskForm):
     custom_id = URLField(
         'Короткий идентификатор',
         validators=[
-            Length(max=10)
+            Length(max=16),
+            Optional()
         ]
     )
     submit = SubmitField('Создать')
