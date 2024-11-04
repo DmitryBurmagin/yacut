@@ -1,4 +1,3 @@
-
 from flask import Flask
 from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
@@ -11,4 +10,4 @@ db = SQLAlchemy(app)
 ma = Marshmallow(app)
 migrate = Migrate(app, db)
 
-from . import views, api_views
+from . import views, api_views, error_handlers
