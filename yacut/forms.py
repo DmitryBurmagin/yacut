@@ -2,6 +2,8 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, URLField
 from wtforms.validators import URL, DataRequired, Length, Optional
 
+MAX_ID_LENGTH = 16
+
 
 class UrlForm(FlaskForm):
     original_link = URLField(
@@ -14,7 +16,7 @@ class UrlForm(FlaskForm):
     custom_id = StringField(
         'Короткий идентификатор',
         validators=[
-            Length(max=16),
+            Length(max=MAX_ID_LENGTH),
             Optional()
         ]
     )

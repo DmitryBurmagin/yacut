@@ -1,3 +1,5 @@
+from http import HTTPStatus
+
 from flask import jsonify, request
 
 from . import app, db, test_base_url
@@ -25,12 +27,12 @@ def create_short_link():
         'url': original_link,
         'short_link': f'{test_base_url}/{custom_id}',
     }
-    return jsonify(response), 201
+    return jsonify(response), HTTPStatus.CREATED
 
 
 @app.route('/api/id/<string:short_id>/', methods=['GET'])
 def get_original_link(short_id):
     url_map = validate_short_id(short_id)
     if not url_map:
-        return jsonify({'message': 'ID не найден'}), 404
-    return jsonify({'url': url_map.original}), 200
+        return jsonify({'message': 'ID не найден'}), HTTPStatus.NOT_FOUND
+    return jsonify({'url': url_map.original}), HTTPStatus.OK
