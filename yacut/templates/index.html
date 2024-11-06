@@ -16,9 +16,9 @@
             {{ form.hidden_tag() }}
             <div>
               <div>
-                {{ form.url.label(class="form-label") }}
-                {{ form.url(class="form-control form-control-lg py-2 mb-3", placeholder="Длинная ссылка") }}
-                {% for error in form.url.errors %}
+                {{ form.original_link.label(class="form-label") }}
+                {{ form.original_link(class="form-control form-control-lg py-2 mb-3", placeholder="Длинная ссылка") }}
+                {% for error in form.original_link.errors %}
                   <p class="text-danger">{{ error }}</p>
                 {% endfor %}
               </div>

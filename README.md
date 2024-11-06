@@ -1,37 +1,58 @@
-Клонировать репозиторий и перейти в него в командной строке:
+# YaCut: Сервис сокращения ссылок
 
-```
-git clone 
-```
+**YaCut** — это простой веб-сервис для сокращения длинных URL, написанный на Flask. Использует Jinja для шаблонов, SQLAlchemy для работы с базой данных, Alembic для миграций и Marshmallow для валидации данных.
 
-```
-cd yacut
-```
+## Стек технологий
+- Python 3
+- Flask
+- SQLAlchemy
+- Alembic
+- Marshmallow
+- Jinja2
 
-Cоздать и активировать виртуальное окружение:
+## Описание проекта
+YaCut позволяет пользователям создавать короткие URL, которые перенаправляют на оригинальные длинные ссылки. Этот сервис может быть полезен для сокращения ссылок для социальных сетей, маркетинга и других целей, где требуется короткий URL.
 
-```
-python3 -m venv venv
-```
+## Установка и запуск
 
-* Если у вас Linux/macOS
-
-    ```
-    source venv/bin/activate
-    ```
-
-* Если у вас windows
-
-    ```
-    source venv/scripts/activate
+1. **Клонируйте репозиторий** и перейдите в директорию проекта:
+    ```bash
+    git clone <ссылка_на_репозиторий>
+    cd yacut
     ```
 
-Установить зависимости из файла requirements.txt:
+2. **Создайте и активируйте виртуальное окружение**:
+    ```bash
+    python3 -m venv venv
+    ```
 
-```
-python3 -m pip install --upgrade pip
-```
+    - Для активации на **Linux/macOS**:
+        ```bash
+        source venv/bin/activate
+        ```
 
-```
-pip install -r requirements.txt
-```
+    - Для активации на **Windows**:
+        ```bash
+        source venv/scripts/activate
+        ```
+
+3. **Установите зависимости** из файла `requirements.txt`:
+    ```bash
+    python3 -m pip install --upgrade pip
+    pip install -r requirements.txt
+    ```
+
+4. **Примените миграции базы данных** с помощью Alembic:
+    ```bash
+    flask db upgrade
+    ```
+
+5. **Запустите сервер**:
+    ```bash
+    flask run
+    ```
+
+6. Перейдите в браузер по адресу [http://127.0.0.1:5000](http://127.0.0.1:5000) для доступа к сервису.
+
+## Автор
+Бурмагин Дмитрий Андреевич

@@ -1,10 +1,10 @@
 from flask_wtf import FlaskForm
-from wtforms import URLField, SubmitField, StringField
-from wtforms.validators import DataRequired, URL, Length, Optional
+from wtforms import StringField, SubmitField, URLField
+from wtforms.validators import URL, DataRequired, Length, Optional
 
 
 class UrlForm(FlaskForm):
-    url = URLField(
+    original_link = URLField(
         'Оригинальная ссылка',
         validators=[
             DataRequired(message='Это поле обязательно для заполнения'),

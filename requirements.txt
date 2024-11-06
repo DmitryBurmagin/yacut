@@ -4,6 +4,7 @@ blinker==1.8.2
 click==8.1.7
 flake8==5.0.4
 Flask==3.0.2
+flask-marshmallow==1.2.1
 Flask-Migrate==4.0.5
 Flask-SQLAlchemy==3.1.1
 Flask-WTF==1.2.1
@@ -14,6 +15,8 @@ itsdangerous==2.2.0
 Jinja2==3.1.4
 Mako==1.3.3
 MarkupSafe==2.1.5
+marshmallow==3.23.1
+marshmallow-sqlalchemy==1.1.0
 mccabe==0.7.0
 packaging==24.0
 pluggy==1.5.0
